@@ -7,9 +7,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import pt.isel.poo.g6li11d.draw.model.Circle;
 import pt.isel.poo.g6li11d.draw.model.DrawModel;
 import pt.isel.poo.g6li11d.draw.model.Figure;
+import pt.isel.poo.g6li11d.draw.model.Line;
+import pt.isel.poo.g6li11d.draw.model.Pixel;
+import pt.isel.poo.g6li11d.draw.model.Rect;
 import pt.isel.poo.g6li11d.draw.view.DrawView;
 
 public class DrawController extends Activity {
@@ -58,7 +67,7 @@ public class DrawController extends Activity {
         line = new RadioButton(this);
         line.setText("Line");
         rect = new RadioButton(this);
-        rect.setText("Rectangle");
+        rect.setText("Rect");
 
         radioGroup.addView(pixel);
         radioGroup.addView(circle);
@@ -79,20 +88,39 @@ public class DrawController extends Activity {
         setContentView(layout);
     }
 
-    private void onReset() {
-        Log.i("Draw", "Reset button pressed!");
-    }
+    private void onReset() { Log.i("Draw", "Reset button pressed!"); }
 
     private void onLoad() {
         Log.i("Draw", "Load button pressed!");
+
+        try (Scanner in = new Scanner(openFileInput(FILE)))  {
+            model.load(in);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Can't open file", Toast.LENGTH_LONG).show();
+        }
+
+        view.reloadModel(model);
     }
 
     private void onSave() {
         Log.i("Draw", "Save button pressed!");
+
+        try (PrintWriter out = new PrintWriter(openFileOutput(FILE, MODE_PRIVATE))) {
+            model.save(out);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error saving file!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public Figure createSelectedFigure(int x, int y) {
-        return null; // TODO
+        if (pixel.isChecked()) return new Pixel(x, y);
+        if (circle.isChecked()) return new Circle(x, y);
+        if (line.isChecked()) return new Line(x, y);
+        if (rect.isChecked()) return new Rect(x, y);
+
+        return null;
     }
 
 }

@@ -1,17 +1,15 @@
 package pt.isel.poo.g6li11d.draw.model;
 
-import android.graphics.Point;
-
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public abstract class Figure {
 
-    protected Figure() { }
+    Point start;
 
-    protected Figure(int x, int y) {
+    protected Figure() { start = new Point(); }
 
-    }
+    protected Figure(int x, int y) { start = new Point(x, y); }
 
     public void save(PrintWriter out) {
 
@@ -21,16 +19,20 @@ public abstract class Figure {
 
     }
 
-    public Point getStart() {
-        return null; // TODO
-    }
+    public Point getStart() { return start; }
 
     protected abstract char getLetter();
 
-    protected abstract void setEnd(int x, int y);
+    public abstract void setEnd(int x, int y);
 
     public static Figure newInstance(char letter) {
-        return null; // TODO
+        switch (letter) {
+            case Pixel.LETTER: return new Pixel();
+            case Rect.LETTER: return new Rect();
+            case Circle.LETTER: return new Circle();
+            case Line.LETTER: return new Line();
+            default: return null;
+        }
     }
 
 }

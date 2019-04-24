@@ -19,6 +19,7 @@ public class DrawView extends View {
 
     private LinkedList<FigureView> views = new LinkedList<>();
     private DrawController ctrl;
+    private FigureView curr;
 
     public DrawView(DrawController ctrl) {
         super(ctrl);
@@ -28,6 +29,7 @@ public class DrawView extends View {
     }
 
     public void reloadModel(DrawModel model) {
+        views.clear();
         for (Figure f : model)
             views.add(FigureView.newInstance(f));
 
@@ -42,6 +44,20 @@ public class DrawView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        if (action == MotionEvent.ACTION_DOWN) {
+            Figure f = ctrl.createSelectedFigure(x, y);
+            curr = FigureView.newInstance(f);
+            views.add(curr);
+            return true;
+        } else if (action == MotionEvent.ACTION_MOVE) {
+            curr.elem.setEnd(x, y);
+            invalidate();
+            return true;
+        }
+
         return super.onTouchEvent(event);
     }
 

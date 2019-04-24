@@ -22,8 +22,6 @@ public class DrawModel implements Iterable<Figure> {
     }
 
     @Override
-    public Iterator<Figure> iterator() {
-        return figures.iterator();
-    }
+    public Iterator<Figure> iterator() { return figures.iterator(); }
 
 }
