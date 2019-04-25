@@ -21,12 +21,13 @@ public class Point {
 
     public int getY() { return y; }
 
-    public void save(PrintWriter out) {
-
-    }
+    public void save(PrintWriter out) { out.write("(" + x + ',' + y + ")"); }
 
     public void load(Scanner in) {
-
+        String p = in.next();
+        String[] start = p.substring(1, p.length() - 1).split(",");
+        int x = Integer.parseInt(start[0]), y = Integer.parseInt(start[1]);
+        set(x, y);
     }
 
 }

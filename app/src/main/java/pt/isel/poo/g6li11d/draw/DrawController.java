@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import pt.isel.poo.g6li11d.draw.model.Circle;
@@ -88,14 +89,18 @@ public class DrawController extends Activity {
         setContentView(layout);
     }
 
-    private void onReset() { Log.i("Draw", "Reset button pressed!"); }
+    private void onReset() {
+        Log.i("Draw", "Reset button pressed!");
+        model.clear();
+        view.reloadModel(model);
+    }
 
     private void onLoad() {
         Log.i("Draw", "Load button pressed!");
 
         try (Scanner in = new Scanner(openFileInput(FILE)))  {
             model.load(in);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | NoSuchElementException e) {
             e.printStackTrace();
             Toast.makeText(this, "Can't open file", Toast.LENGTH_LONG).show();
         }
@@ -115,12 +120,14 @@ public class DrawController extends Activity {
     }
 
     public Figure createSelectedFigure(int x, int y) {
-        if (pixel.isChecked()) return new Pixel(x, y);
-        if (circle.isChecked()) return new Circle(x, y);
-        if (line.isChecked()) return new Line(x, y);
-        if (rect.isChecked()) return new Rect(x, y);
+        Figure figure = null;
+        if (pixel.isChecked()) figure = new Pixel(x, y);
+        else if (circle.isChecked()) figure = new Circle(x, y);
+        else if (line.isChecked()) figure = new Line(x, y);
+        else if (rect.isChecked()) figure = new Rect(x, y);
 
-        return null;
+        model.add(figure);
+        return figure;
     }
 
 }

@@ -12,11 +12,14 @@ public abstract class Figure {
     protected Figure(int x, int y) { start = new Point(x, y); }
 
     public void save(PrintWriter out) {
-
+        out.write(getLetter() + " ");
+        start.save(out);
+        out.write(' ');
     }
 
     public void load(Scanner in) {
-
+        start = new Point();
+        start.load(in);
     }
 
     public Point getStart() { return start; }
