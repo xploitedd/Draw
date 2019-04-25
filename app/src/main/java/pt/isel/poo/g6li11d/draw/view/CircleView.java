@@ -8,8 +8,17 @@ import pt.isel.poo.g6li11d.draw.model.Point;
 
 public class CircleView extends FigureView {
 
+    /**
+     * Creates a new circle view
+     * @param f figure that represents this CircleView (must be a Circle)
+     * {@link Circle}
+     */
     CircleView(Figure f) { super(f); }
 
+    /**
+     * Draws this circle onto the DrawView
+     * @param c Canvas where the figure will be drawn
+     */
     @Override
     void draw(Canvas c) {
         Point start = elem.getStart();

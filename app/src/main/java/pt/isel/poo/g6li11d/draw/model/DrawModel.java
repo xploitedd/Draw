@@ -8,8 +8,15 @@ import java.util.Scanner;
 
 public class DrawModel implements Iterable<Figure> {
 
+    /**
+     * LinkedList used to store the figures
+     */
     private LinkedList<Figure> figures = new LinkedList<>();
 
+    /**
+     * Saves every stored figure to a file
+     * @param out PrintWriter that will save every figure to a file
+     */
     public void save(PrintWriter out) {
         out.println(figures.size());
         for (Figure f : figures) {
@@ -18,9 +25,11 @@ public class DrawModel implements Iterable<Figure> {
         }
     }
 
+    /**
+     * Loads every figure specified in a file and creates it
+     * @param in Scanner where the figures will be read
+     */
     public void load(Scanner in) {
-        figures.clear(); // clear all previous figures first
-
         int count = in.nextInt();
         in.nextLine(); // skip the first line (where the count is)
         for (int i = 0; i < count; ++i) {
@@ -35,12 +44,21 @@ public class DrawModel implements Iterable<Figure> {
         }
     }
 
-    public void add(Figure f) {
-        figures.add(f);
-    }
+    /**
+     * Adds a new figure
+     * @param f figure to be added
+     */
+    public void add(Figure f) { figures.add(f); }
 
+    /**
+     * Clears every figure
+     */
     public void clear() { figures.clear(); }
 
+    /**
+     * {@inheritDoc}
+     * @return a new iterator for the stored figures
+     */
     @Override
     public Iterator<Figure> iterator() { return figures.iterator(); }
 

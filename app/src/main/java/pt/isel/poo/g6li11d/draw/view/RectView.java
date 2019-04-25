@@ -8,8 +8,17 @@ import pt.isel.poo.g6li11d.draw.model.Rect;
 
 public class RectView extends FigureView {
 
+    /**
+     * Creates a new rectangle view
+     * @param f figure that represents this RectView (must be a Rect)
+     * {@link Rect}
+     */
     RectView(Figure f) { super(f); }
 
+    /**
+     * Draws this rectangle onto the DrawView
+     * @param c Canvas where the figure will be drawn
+     */
     @Override
     void draw(Canvas c) {
         Point start = elem.getStart();

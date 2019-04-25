@@ -32,9 +32,6 @@ public class DrawController extends Activity {
     private RadioButton circle;
     private RadioButton line;
     private RadioButton rect;
-    private Button save;
-    private Button load;
-    private Button reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +40,21 @@ public class DrawController extends Activity {
         model = new DrawModel();
         view = new DrawView(this);
 
+        // Layout for the Buttons, RadioButtons and DrawView
         LinearLayout layout = new LinearLayout(this);
+        // Layout for the Buttons
         LinearLayout buttonGroup = new LinearLayout(this);
+        // Layout for the RadioButtons
         RadioGroup radioGroup = new RadioGroup(this);
 
-        save = new Button(this);
+        // Create the buttons and add them to the button group
+        Button save = new Button(this);
         save.setText("Save");
         save.setOnClickListener(v -> onSave());
-        load = new Button(this);
+        Button load = new Button(this);
         load.setText("Load");
         load.setOnClickListener(v -> onLoad());
-        reset = new Button(this);
+        Button reset = new Button(this);
         reset.setText("Reset");
         reset.setOnClickListener(v -> onReset());
 
@@ -61,6 +62,7 @@ public class DrawController extends Activity {
         buttonGroup.addView(load);
         buttonGroup.addView(reset);
 
+        // Create the radio buttons and add them to the radio group
         pixel = new RadioButton(this);
         pixel.setText("Pixel");
         circle = new RadioButton(this);
@@ -79,6 +81,8 @@ public class DrawController extends Activity {
         // or it will bug with the other radio buttons
         pixel.toggle();
 
+        // We want the radio group to be displayed horizontally and the main layout
+        // vertically
         radioGroup.setOrientation(LinearLayout.HORIZONTAL);
         layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -89,18 +93,30 @@ public class DrawController extends Activity {
         setContentView(layout);
     }
 
+    /**
+     * Called when the user presses the reset button
+     * This will delete every figure and reload the
+     * view
+     */
     private void onReset() {
         Log.i("Draw", "Reset button pressed!");
         model.clear();
         view.reloadModel(model);
     }
 
+    /**
+     * Called when the user presses the load button
+     * This will load every figure from the specified
+     * file and reload the view
+     */
     private void onLoad() {
         Log.i("Draw", "Load button pressed!");
 
         try (Scanner in = new Scanner(openFileInput(FILE)))  {
             model.load(in);
-        } catch (FileNotFoundException | NoSuchElementException e) {
+        } catch (Exception e) {
+            // catches every exception that can occur
+            // while loading and interpreting a file
             e.printStackTrace();
             Toast.makeText(this, "Can't open file", Toast.LENGTH_LONG).show();
         }
@@ -108,6 +124,11 @@ public class DrawController extends Activity {
         view.reloadModel(model);
     }
 
+    /**
+     * Called when the user presses the save button
+     * This will save every figure onto the specified
+     * file
+     */
     private void onSave() {
         Log.i("Draw", "Save button pressed!");
 
@@ -119,6 +140,13 @@ public class DrawController extends Activity {
         }
     }
 
+    /**
+     * Creates a new figure on (x, y) based on the
+     * selected radio button
+     * @param x x position of the figure
+     * @param y y position of the figure
+     * @return a new Figure instance or null if a bug occurs
+     */
     public Figure createSelectedFigure(int x, int y) {
         Figure figure = null;
         if (pixel.isChecked()) figure = new Pixel(x, y);
