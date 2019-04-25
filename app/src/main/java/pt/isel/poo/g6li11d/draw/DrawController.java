@@ -93,6 +93,22 @@ public class DrawController extends Activity {
         setContentView(layout);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // used to save the contents before the activity goes
+        // to background or the screen rotates
+        onSave();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // used to load the contents from an activity that was in
+        // background or that was rotated
+        onLoad();
+    }
+
     /**
      * Called when the user presses the reset button
      * This will delete every figure and reload the
