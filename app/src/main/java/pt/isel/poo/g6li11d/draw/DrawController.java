@@ -9,6 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.NoSuchElementException;
@@ -77,7 +79,7 @@ public class DrawController extends Activity {
         radioGroup.addView(line);
         radioGroup.addView(rect);
 
-        // It is important to toggle it only after adding it to the radio group
+        // It is important to toggle the default only after adding it to the radio group
         // or it will bug with the other radio buttons
         pixel.toggle();
 
@@ -98,7 +100,9 @@ public class DrawController extends Activity {
         super.onSaveInstanceState(outState);
         // used to save the contents before the activity goes
         // to background or the screen rotates
-        onSave();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        model.save(new PrintWriter(outputStream));
+        outState.putByteArray("model", outputStream.toByteArray());
     }
 
     @Override
@@ -106,7 +110,9 @@ public class DrawController extends Activity {
         super.onRestoreInstanceState(savedInstanceState);
         // used to load the contents from an activity that was in
         // background or that was rotated
-        onLoad();
+        byte[] modelArray = savedInstanceState.getByteArray("model");
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(modelArray);
+        model.load(new Scanner(inputStream));
     }
 
     /**
