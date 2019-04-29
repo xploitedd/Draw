@@ -101,7 +101,9 @@ public class DrawController extends Activity {
         // used to save the contents before the activity goes
         // to background or the screen rotates
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        model.save(new PrintWriter(outputStream));
+        PrintWriter writer = new PrintWriter(outputStream);
+        model.save(writer);
+        writer.close();
         outState.putByteArray("model", outputStream.toByteArray());
     }
 
@@ -111,8 +113,10 @@ public class DrawController extends Activity {
         // used to load the contents from an activity that was in
         // background or that was rotated
         byte[] modelArray = savedInstanceState.getByteArray("model");
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(modelArray);
-        model.load(new Scanner(inputStream));
+        Scanner scanner = new Scanner(new ByteArrayInputStream(modelArray));
+        model.load(scanner);
+        scanner.close();
+        view.reloadModel(model);
     }
 
     /**

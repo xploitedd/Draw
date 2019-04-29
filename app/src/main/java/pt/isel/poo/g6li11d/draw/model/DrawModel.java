@@ -29,7 +29,7 @@ public class DrawModel implements Iterable<Figure> {
      * Loads every figure specified in a file and creates it
      * @param in Scanner where the figures will be read
      */
-    public void load(Scanner in) {
+    public void load(Scanner in) throws NoSuchElementException {
         int count = in.nextInt();
         in.nextLine(); // skip the first line (where the count is)
         for (int i = 0; i < count; ++i) {
