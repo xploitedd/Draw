@@ -180,7 +180,9 @@ public class DrawController extends Activity {
         else if (line.isChecked()) figure = new Line(x, y);
         else if (rect.isChecked()) figure = new Rect(x, y);
 
-        model.add(figure);
+        if (figure != null)
+            model.add(figure);
+
         return figure;
     }
 

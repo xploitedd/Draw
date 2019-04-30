@@ -46,11 +46,11 @@ public abstract class FigureView {
      * @return a new FigureView instance
      */
     static FigureView newInstance(Figure f) {
-        if (f instanceof Pixel) return new PixelView(f);
-        if (f instanceof Circle) return new CircleView(f);
-        // Rect needs to come before line because Rect extends Line
-        if (f instanceof Rect) return new RectView(f);
-        if (f instanceof Line) return new LineView(f);
+        Class<?> fClass = f.getClass();
+        if (fClass == Pixel.class) return new PixelView(f);
+        else if (fClass == Circle.class) return new CircleView(f);
+        else if (fClass == Rect.class) return new RectView(f);
+        else if (fClass == Line.class) return new LineView(f);
 
         return null;
     }
