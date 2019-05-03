@@ -55,7 +55,7 @@ public class Point {
      * Saves this point to a file
      * @param out PrintWriter where to write point information
      */
-    public void save(PrintWriter out) { out.write("(" + x + ',' + y + ") "); }
+    public void save(PrintWriter out) { out.write(" (" + x + ',' + y + ")"); }
 
     /**
      * Loads this point with information from a file
@@ -63,10 +63,8 @@ public class Point {
      */
     public void load(Scanner in) {
         String p = in.next();
-        if (p.equals(" "))
-            return;
-
         String[] start = p.substring(1, p.length() - 1).split(",");
+        // if the content has a bad format then it throws IndexOutOfBounds
         int x = Integer.parseInt(start[0]), y = Integer.parseInt(start[1]);
         set(x, y);
     }
@@ -74,7 +72,7 @@ public class Point {
     public static LinkedList<Point> getPoints(Scanner in) {
         LinkedList<Point> points = new LinkedList<>();
 
-        while (in.hasNext()) {
+        while (in.hasNext("(\\(+[0-9]+,[0-9]+\\))+")) {
             Point p = new Point();
             p.load(in);
             points.add(p);
