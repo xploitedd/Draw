@@ -6,6 +6,7 @@ import android.graphics.Paint;
 
 import pt.isel.poo.g6li11d.draw.model.Circle;
 import pt.isel.poo.g6li11d.draw.model.Figure;
+import pt.isel.poo.g6li11d.draw.model.FreeForm;
 import pt.isel.poo.g6li11d.draw.model.Line;
 import pt.isel.poo.g6li11d.draw.model.Pixel;
 import pt.isel.poo.g6li11d.draw.model.Rect;
@@ -51,6 +52,7 @@ public abstract class FigureView {
         else if (fClass == Circle.class) return new CircleView(f);
         else if (fClass == Rect.class) return new RectView(f);
         else if (fClass == Line.class) return new LineView(f);
+        else if (fClass == FreeForm.class) return new FreeFormView(f);
 
         return null;
     }

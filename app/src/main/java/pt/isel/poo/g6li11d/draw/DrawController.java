@@ -19,6 +19,7 @@ import java.util.Scanner;
 import pt.isel.poo.g6li11d.draw.model.Circle;
 import pt.isel.poo.g6li11d.draw.model.DrawModel;
 import pt.isel.poo.g6li11d.draw.model.Figure;
+import pt.isel.poo.g6li11d.draw.model.FreeForm;
 import pt.isel.poo.g6li11d.draw.model.Line;
 import pt.isel.poo.g6li11d.draw.model.Pixel;
 import pt.isel.poo.g6li11d.draw.model.Rect;
@@ -34,6 +35,7 @@ public class DrawController extends Activity {
     private RadioButton circle;
     private RadioButton line;
     private RadioButton rect;
+    private RadioButton free;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +75,14 @@ public class DrawController extends Activity {
         line.setText("Line");
         rect = new RadioButton(this);
         rect.setText("Rect");
+        free = new RadioButton(this);
+        free.setText("FreeForm");
 
         radioGroup.addView(pixel);
         radioGroup.addView(circle);
         radioGroup.addView(line);
         radioGroup.addView(rect);
+        radioGroup.addView(free);
 
         // It is important to toggle the default only after adding it to the radio group
         // or it will bug with the other radio buttons
@@ -179,6 +184,7 @@ public class DrawController extends Activity {
         else if (circle.isChecked()) figure = new Circle(x, y);
         else if (line.isChecked()) figure = new Line(x, y);
         else if (rect.isChecked()) figure = new Rect(x, y);
+        else if (free.isChecked()) figure = new FreeForm(x, y);
 
         if (figure != null)
             model.add(figure);

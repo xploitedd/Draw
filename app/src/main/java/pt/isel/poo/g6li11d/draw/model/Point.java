@@ -1,6 +1,7 @@
 package pt.isel.poo.g6li11d.draw.model;
 
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Point {
@@ -54,7 +55,7 @@ public class Point {
      * Saves this point to a file
      * @param out PrintWriter where to write point information
      */
-    public void save(PrintWriter out) { out.write("(" + x + ',' + y + ")"); }
+    public void save(PrintWriter out) { out.write("(" + x + ',' + y + ") "); }
 
     /**
      * Loads this point with information from a file
@@ -62,9 +63,24 @@ public class Point {
      */
     public void load(Scanner in) {
         String p = in.next();
+        if (p.equals(" "))
+            return;
+
         String[] start = p.substring(1, p.length() - 1).split(",");
         int x = Integer.parseInt(start[0]), y = Integer.parseInt(start[1]);
         set(x, y);
+    }
+
+    public static LinkedList<Point> getPoints(Scanner in) {
+        LinkedList<Point> points = new LinkedList<>();
+
+        while (in.hasNext()) {
+            Point p = new Point();
+            p.load(in);
+            points.add(p);
+        }
+
+        return points;
     }
 
 }
