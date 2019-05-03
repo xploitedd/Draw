@@ -27,7 +27,7 @@ public abstract class Figure {
      * @param out PrintWriter that will save the data
      */
     public void save(PrintWriter out) {
-        out.write(getLetter() + " ");
+        out.write(getLetter());
         start.save(out);
     }
 
