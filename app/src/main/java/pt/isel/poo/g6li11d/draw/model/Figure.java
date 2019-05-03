@@ -29,17 +29,13 @@ public abstract class Figure {
     public void save(PrintWriter out) {
         out.write(getLetter() + " ");
         start.save(out);
-        out.write(' ');
     }
 
     /**
      * Loads a figure from a file
      * @param in Scanner that reads the file
      */
-    public void load(Scanner in) {
-        start = new Point();
-        start.load(in);
-    }
+    public void load(Scanner in) { start.load(in); }
 
     /**
      * Gets the starting point
@@ -71,6 +67,7 @@ public abstract class Figure {
             case Rect.LETTER: return new Rect();
             case Circle.LETTER: return new Circle();
             case Line.LETTER: return new Line();
+            case FreeForm.LETTER: return new FreeForm();
             default: return null;
         }
     }
