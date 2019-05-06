@@ -1,8 +1,10 @@
 package pt.isel.poo.g6li11d.draw.view;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -42,8 +44,17 @@ public class DrawView extends View {
     public DrawView(DrawController ctrl) {
         super(ctrl);
         this.ctrl = ctrl;
-
         setBackgroundColor(BACKGROUND_COLOR);
+    }
+
+    /**
+     * Creates a new drawing board in a DrawController activity
+     * @param ctx DrawController activity context
+     * @param attributeSet Attribute Set for this view
+     */
+    public DrawView(Context ctx, AttributeSet attributeSet) {
+        super(ctx, attributeSet);
+        ctrl = (DrawController) ctx;
     }
 
     /**

@@ -3,6 +3,7 @@ package pt.isel.poo.g6li11d.draw;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -38,61 +39,14 @@ public class DrawController extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         model = new DrawModel();
-        view = new DrawView(this);
-
-        // Layout for the Buttons, RadioButtons and DrawView
-        LinearLayout layout = new LinearLayout(this);
-        // Layout for the Buttons
-        LinearLayout buttonGroup = new LinearLayout(this);
-        // Layout for the RadioButtons
-        RadioGroup radioGroup = new RadioGroup(this);
-
-        // Create the buttons and add them to the button group
-        Button save = new Button(this);
-        save.setText("Save");
-        save.setOnClickListener(v -> onSave());
-        Button load = new Button(this);
-        load.setText("Load");
-        load.setOnClickListener(v -> onLoad());
-        Button reset = new Button(this);
-        reset.setText("Reset");
-        reset.setOnClickListener(v -> onReset());
-
-        buttonGroup.addView(save);
-        buttonGroup.addView(load);
-        buttonGroup.addView(reset);
-
-        // Create the radio buttons and add them to the radio group
-        pixel = new RadioButton(this);
-        pixel.setText("Pixel");
-        circle = new RadioButton(this);
-        circle.setText("Circle");
-        line = new RadioButton(this);
-        line.setText("Line");
-        rect = new RadioButton(this);
-        rect.setText("Rect");
-
-        radioGroup.addView(pixel);
-        radioGroup.addView(circle);
-        radioGroup.addView(line);
-        radioGroup.addView(rect);
-
-        // It is important to toggle the default only after adding it to the radio group
-        // or it will bug with the other radio buttons
-        pixel.toggle();
-
-        // We want the radio group to be displayed horizontally and the main layout
-        // vertically
-        radioGroup.setOrientation(LinearLayout.HORIZONTAL);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        layout.addView(buttonGroup);
-        layout.addView(radioGroup);
-        layout.addView(view);
-
-        setContentView(layout);
+        view = findViewById(R.id.drawView);
+        pixel = findViewById(R.id.pixel);
+        circle = findViewById(R.id.cirlce);
+        line = findViewById(R.id.line);
+        rect = findViewById(R.id.rect);
     }
 
     @Override
@@ -124,7 +78,7 @@ public class DrawController extends Activity {
      * This will delete every figure and reload the
      * view
      */
-    private void onReset() {
+    public void onReset(View v) {
         Log.i("Draw", "Reset button pressed!");
         model.clear();
         view.reloadModel(model);
@@ -135,7 +89,7 @@ public class DrawController extends Activity {
      * This will load every figure from the specified
      * file and reload the view
      */
-    private void onLoad() {
+    public void onLoad(View v) {
         Log.i("Draw", "Load button pressed!");
 
         try (Scanner in = new Scanner(openFileInput(FILE)))  {
@@ -155,7 +109,7 @@ public class DrawController extends Activity {
      * This will save every figure onto the specified
      * file
      */
-    private void onSave() {
+    public void onSave(View v) {
         Log.i("Draw", "Save button pressed!");
 
         try (PrintWriter out = new PrintWriter(openFileOutput(FILE, MODE_PRIVATE))) {
