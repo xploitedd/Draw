@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public abstract class Figure {
-    protected Point start = null;
+    protected Point start;
     protected Point end;
 
     Figure(int x, int y) {
@@ -36,9 +36,8 @@ public abstract class Figure {
         }
     }
 
-    public PrintWriter save(){
+    public void save(PrintWriter out){
         //TODO
-        return null;
     }
 
     public Point getStart(){
@@ -47,7 +46,6 @@ public abstract class Figure {
 
     public void load(Scanner in){
         //TODO
-        return;
     }
 
     public abstract void setEnd(int x, int y);

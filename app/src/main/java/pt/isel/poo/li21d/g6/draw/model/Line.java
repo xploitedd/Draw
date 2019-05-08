@@ -24,12 +24,10 @@ public class Line extends Figure {
 
     public void load(Scanner in){
         //TODO
-        return;
     }
 
-    public PrintWriter save(){
+    public void save(PrintWriter out){
         //TODO
-        return null;
     }
 
     public Point getEnd() {

@@ -26,13 +26,11 @@ public class Point{
         return this.x;
     }
 
-    public PrintWriter save(){
-        //TODO
-        return null;
-    }
+    public void save(PrintWriter out){
+            //TODO
+        }
 
     public void load(Scanner in){
         //TODO
-        return;
     }
 }
