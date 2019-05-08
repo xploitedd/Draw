@@ -15,7 +15,7 @@ import pt.isel.poo.li21d.g6.draw.view.DrawView;
 
 public class DrawController extends Activity {
 
-    private int chosenFigure;;
+    private int chosenFigure;
     private static final int LINE = 0, RECT = 1, PIXEL = 2 ,CIRCLE = 3;
     private DrawView View;
 
