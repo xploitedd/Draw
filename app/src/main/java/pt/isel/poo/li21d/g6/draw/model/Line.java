@@ -6,19 +6,20 @@ import java.util.Scanner;
 public class Line extends Figure {
 
     public static char LETTER = 'l';
-    private Point end;
 
     public Line(){
+        super();
         end = new Point();
     }
 
     public Line(int x, int y){
-        end = new Point(x,y);
+        super(x,y);
+        end = new Point();
     }
 
     @Override
     protected char getLetter() {
-        return 0;
+        return LETTER;
     }
 
     public void load(Scanner in){
@@ -37,6 +38,6 @@ public class Line extends Figure {
 
     @Override
     public void setEnd(int x, int y) {
-
+        this.end.set(x,y);
     }
 }

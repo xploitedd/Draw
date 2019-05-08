@@ -4,7 +4,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public abstract class Figure {
-    Point start = null;
+    protected Point start = null;
+    protected Point end;
 
     Figure(int x, int y) {
         start = new Point(x, y);
