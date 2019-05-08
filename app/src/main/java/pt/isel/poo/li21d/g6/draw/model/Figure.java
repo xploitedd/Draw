@@ -1,5 +1,8 @@
 package pt.isel.poo.li21d.g6.draw.model;
 
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 public abstract class Figure {
     Point start = null;
 
@@ -32,8 +35,18 @@ public abstract class Figure {
         }
     }
 
+    public PrintWriter save(){
+        //TODO
+        return null;
+    }
+
     public Point getStart(){
         return start;
+    }
+
+    public void load(Scanner in){
+        //TODO
+        return;
     }
 
     public abstract void setEnd(int x, int y);
