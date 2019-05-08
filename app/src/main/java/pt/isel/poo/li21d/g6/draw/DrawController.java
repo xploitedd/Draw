@@ -4,20 +4,26 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import pt.isel.poo.li21d.g6.draw.model.Figure;
+import pt.isel.poo.li21d.g6.draw.view.DrawView;
+
 public class DrawController extends Activity {
 
-    private int chosenFigure;
+    private int chosenFigure;;
     private static final int LINE = 0, RECT = 1, PIXEL = 2 ,CIRCLE = 3;
+    private DrawView View;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        View = new DrawView(this);
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         LinearLayout buttons = new LinearLayout(this);
@@ -38,6 +44,11 @@ public class DrawController extends Activity {
 
     private void setChosenFigure(int chosen) {
         this.chosenFigure = chosen;
+    }
+
+    private Figure createSelectedFigure(int x, int y){
+        //TODO
+        return null;
     }
 
     @SuppressLint("AppCompatCustomView")
