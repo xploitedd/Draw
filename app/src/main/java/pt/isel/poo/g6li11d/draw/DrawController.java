@@ -157,7 +157,7 @@ public class DrawController extends Activity {
             // catches every exception that can occur
             // while loading and interpreting a file
             e.printStackTrace();
-            Toast.makeText(this, "Can't open file", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error loading shapes!", Toast.LENGTH_LONG).show();
         }
 
         view.reloadModel(model);

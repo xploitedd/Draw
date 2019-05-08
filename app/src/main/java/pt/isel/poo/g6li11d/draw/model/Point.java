@@ -1,8 +1,10 @@
 package pt.isel.poo.g6li11d.draw.model;
 
 import java.io.PrintWriter;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.regex.MatchResult;
 
 public class Point {
 
@@ -62,23 +64,11 @@ public class Point {
      * @param in Scanner where to read the coordinates
      */
     public void load(Scanner in) {
-        String p = in.next();
-        String[] start = p.substring(1, p.length() - 1).split(",");
-        // if the content has a bad format then it throws IndexOutOfBounds
-        int x = Integer.parseInt(start[0]), y = Integer.parseInt(start[1]);
+        // throws NoSuchElementException if the pattern is not found
+        in.next("[(](-?[0-9]+)[,](-?[0-9]+)[)]");
+        MatchResult mr = in.match();
+        int x = Integer.parseInt(mr.group(1)), y = Integer.parseInt(mr.group(2));
         set(x, y);
-    }
-
-    public static LinkedList<Point> getPoints(Scanner in) {
-        LinkedList<Point> points = new LinkedList<>();
-
-        while (in.hasNext("(\\(+[0-9]+,[0-9]+\\))+")) {
-            Point p = new Point();
-            p.load(in);
-            points.add(p);
-        }
-
-        return points;
     }
 
 }

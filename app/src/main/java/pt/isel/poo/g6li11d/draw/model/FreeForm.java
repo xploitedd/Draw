@@ -20,12 +20,19 @@ public class FreeForm extends Figure implements Iterable<Point> {
         super.save(out);
         for (Point p : points)
             p.save(out);
+
+        out.write(" E");
     }
 
     @Override
     public void load(Scanner in) {
         super.load(in);
-        points = Point.getPoints(in);
+        while (!in.hasNext("E")) {
+            Point p = new Point();
+            p.load(in);
+            points.add(p);
+        }
+
     }
 
     @Override
