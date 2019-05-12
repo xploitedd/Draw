@@ -29,7 +29,7 @@ public class DrawController extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View = new DrawView(this);
+        View = new DrawView(this, this);
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         LinearLayout buttons = new LinearLayout(this);
@@ -45,6 +45,7 @@ public class DrawController extends Activity {
         new RadButton("Circle", radioButtons, v -> setChosenFigure(CIRCLE));
         root.addView(buttons);
         root.addView(radioButtons);
+        root.addView(View);
         setContentView(root);
     }
 
@@ -52,13 +53,14 @@ public class DrawController extends Activity {
         this.chosenFigure = chosen;
     }
 
-    private Figure createSelectedFigure(int x, int y){
-        Figure newfig = null;
+    public Figure createSelectedFigure(int x, int y){
+        Figure newfig;
         switch(chosenFigure){
             case 'l': newfig = new Line(x,y);break;
             case 'r': newfig = new Rect(x,y);break;
             case 'p': newfig = new Pixel(x,y);break;
             case 'c': newfig = new Circle(x,y);break;
+            default: newfig = null;
         }
         if(newfig != null) model.add(newfig);
         return newfig;

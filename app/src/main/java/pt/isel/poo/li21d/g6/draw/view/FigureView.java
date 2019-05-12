@@ -21,7 +21,7 @@ public abstract class FigureView {
 
     abstract void draw(Canvas c);
 
-    FigureView newInstance(Figure f) {
+    static FigureView newInstance(Figure f) {
         if (f instanceof Circle) return new CircleView(f);
         if (f instanceof Rect) return new RectView(f);
         if (f instanceof Pixel) return new PixelView(f);
