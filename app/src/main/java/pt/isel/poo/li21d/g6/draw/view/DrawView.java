@@ -2,6 +2,7 @@ package pt.isel.poo.li21d.g6.draw.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,10 +17,12 @@ public class DrawView extends View {
     private DrawController ctrl;
     private LinkedList<FigureView> views = new LinkedList<>();
     private FigureView curr;
+    private static final int BACKGROUND_COLOR = Color.WHITE;
 
     public DrawView(DrawController ctrl, Context context) {
         super(context);
         this.ctrl = ctrl;
+        setBackgroundColor(BACKGROUND_COLOR);
     }
 
     public void reloadModel(DrawModel model){

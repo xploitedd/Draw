@@ -12,6 +12,6 @@ public class PixelView extends FigureView {
 
     @Override
     void draw(Canvas c) {
-
+        
     }
 }
