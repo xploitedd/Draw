@@ -30,7 +30,9 @@ public class DrawView extends View {
     }
 
     protected void onDraw(Canvas canvas){
-        //TODO
+        for (FigureView view: views) {
+            view.draw(canvas);
+        }
         super.onDraw(canvas);
     }
 
@@ -39,15 +41,16 @@ public class DrawView extends View {
         int action = event.getAction();
         int x = (int) event.getX();
         int y = (int) event.getY();
-        if(action == MotionEvent.ACTION_BUTTON_PRESS){
-
+        if(action == MotionEvent.ACTION_DOWN){
             Figure createdFigure = ctrl.createSelectedFigure(x,y);
             curr = FigureView.newInstance(createdFigure);
             views.add(curr);
+            return true;
         }
-        if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_MOVE){
+        if(action == MotionEvent.ACTION_MOVE | action == MotionEvent.ACTION_UP){
             curr.elem.setEnd(x,y);
             invalidate();
+            return true;
         }
         return super.onTouchEvent(event);
     }

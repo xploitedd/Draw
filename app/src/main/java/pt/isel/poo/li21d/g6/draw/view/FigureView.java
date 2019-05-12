@@ -1,6 +1,7 @@
 package pt.isel.poo.li21d.g6.draw.view;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import pt.isel.poo.li21d.g6.draw.model.Circle;
@@ -17,6 +18,9 @@ public abstract class FigureView {
 
     FigureView(Figure f) {
         this.elem = f;
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5f);
     }
 
     abstract void draw(Canvas c);

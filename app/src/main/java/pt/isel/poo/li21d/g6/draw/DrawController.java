@@ -29,6 +29,7 @@ public class DrawController extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        model = new DrawModel();
         View = new DrawView(this, this);
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
