@@ -5,12 +5,12 @@ public class Rect extends Line {
     public static char LETTER = 'r';
 
 
-    Rect(){
+    public Rect(){
         super();
         end = new Point();
     }
 
-    Rect(int x, int y){
+    public Rect(int x, int y){
         super(x,y);
         end = new Point();
     }

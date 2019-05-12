@@ -10,14 +10,20 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import pt.isel.poo.li21d.g6.draw.model.Circle;
+import pt.isel.poo.li21d.g6.draw.model.DrawModel;
 import pt.isel.poo.li21d.g6.draw.model.Figure;
+import pt.isel.poo.li21d.g6.draw.model.Line;
+import pt.isel.poo.li21d.g6.draw.model.Pixel;
+import pt.isel.poo.li21d.g6.draw.model.Rect;
 import pt.isel.poo.li21d.g6.draw.view.DrawView;
 
 public class DrawController extends Activity {
 
-    private int chosenFigure;
-    private static final int LINE = 0, RECT = 1, PIXEL = 2 ,CIRCLE = 3;
+    private char chosenFigure;
+    private static final char LINE = 'l', RECT = 'r', PIXEL = 'p' ,CIRCLE = 'c';
     private DrawView View;
+    private DrawModel model;
 
 
     @Override
@@ -42,13 +48,20 @@ public class DrawController extends Activity {
         setContentView(root);
     }
 
-    private void setChosenFigure(int chosen) {
+    private void setChosenFigure(char chosen) {
         this.chosenFigure = chosen;
     }
 
     private Figure createSelectedFigure(int x, int y){
-        //TODO
-        return null;
+        Figure newfig = null;
+        switch(chosenFigure){
+            case 'l': newfig = new Line(x,y);break;
+            case 'r': newfig = new Rect(x,y);break;
+            case 'p': newfig = new Pixel(x,y);break;
+            case 'c': newfig = new Circle(x,y);break;
+        }
+        if(newfig != null) model.add(newfig);
+        return newfig;
     }
 
     @SuppressLint("AppCompatCustomView")

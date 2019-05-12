@@ -9,7 +9,7 @@ import pt.isel.poo.li21d.g6.draw.model.Line;
 import pt.isel.poo.li21d.g6.draw.model.Pixel;
 import pt.isel.poo.li21d.g6.draw.model.Rect;
 
-public class FigureView {
+public abstract class FigureView {
 
     protected Figure elem;
 
@@ -19,15 +19,13 @@ public class FigureView {
         this.elem = f;
     }
 
-    void draw(Canvas c) {
-        //TODO
-    }
+    abstract void draw(Canvas c);
 
     FigureView newInstance(Figure f) {
-        if (f instanceof Circle) return new CircleView();
-        if (f instanceof Line) return new LineView();
-        if (f instanceof Pixel) return new PixelView();
-        if (f instanceof Rect) return new RectView();
+        if (f instanceof Circle) return new CircleView(f);
+        if (f instanceof Rect) return new RectView(f);
+        if (f instanceof Pixel) return new PixelView(f);
+        if (f instanceof Line) return new LineView(f);
         return null;
     }
 }

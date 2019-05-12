@@ -4,12 +4,12 @@ public class Pixel extends Figure {
 
     private static char LETTER = 'p';
 
-    Pixel(int x, int y){
+    public Pixel(int x, int y){
         super(x,y);
         this.end.set(x,y);
     }
 
-    Pixel(){
+    public Pixel(){
         super();
         end = start;
     }

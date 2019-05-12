@@ -29,7 +29,7 @@ public class DrawView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //TODO
+
         return super.onTouchEvent(event);
     }
 
