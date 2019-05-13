@@ -84,9 +84,8 @@ public class DrawController extends Activity {
         radioGroup.addView(rect);
         radioGroup.addView(free);
 
-        // It is important to toggle the default only after adding it to the radio group
-        // or it will bug with the other radio buttons
-        pixel.toggle();
+        // Check default radio button
+        radioGroup.check(pixel.getId());
 
         // We want the radio group to be displayed horizontally and the main layout
         // vertically
