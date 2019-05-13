@@ -1,15 +1,15 @@
-package pt.isel.poo.g6li11d.draw.view;
+package pt.isel.poo.g6li21d.draw.view;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import pt.isel.poo.g6li11d.draw.model.Circle;
-import pt.isel.poo.g6li11d.draw.model.Figure;
-import pt.isel.poo.g6li11d.draw.model.FreeForm;
-import pt.isel.poo.g6li11d.draw.model.Line;
-import pt.isel.poo.g6li11d.draw.model.Pixel;
-import pt.isel.poo.g6li11d.draw.model.Rect;
+import pt.isel.poo.g6li21d.draw.model.Circle;
+import pt.isel.poo.g6li21d.draw.model.Figure;
+import pt.isel.poo.g6li21d.draw.model.FreeForm;
+import pt.isel.poo.g6li21d.draw.model.Line;
+import pt.isel.poo.g6li21d.draw.model.Pixel;
+import pt.isel.poo.g6li21d.draw.model.Rect;
 
 public abstract class FigureView {
 

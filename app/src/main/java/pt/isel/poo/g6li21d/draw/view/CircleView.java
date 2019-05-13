@@ -1,10 +1,10 @@
-package pt.isel.poo.g6li11d.draw.view;
+package pt.isel.poo.g6li21d.draw.view;
 
 import android.graphics.Canvas;
 
-import pt.isel.poo.g6li11d.draw.model.Circle;
-import pt.isel.poo.g6li11d.draw.model.Figure;
-import pt.isel.poo.g6li11d.draw.model.Point;
+import pt.isel.poo.g6li21d.draw.model.Circle;
+import pt.isel.poo.g6li21d.draw.model.Figure;
+import pt.isel.poo.g6li21d.draw.model.Point;
 
 public class CircleView extends FigureView {
 

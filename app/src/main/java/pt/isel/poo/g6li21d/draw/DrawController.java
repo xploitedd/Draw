@@ -1,4 +1,4 @@
-package pt.isel.poo.g6li11d.draw;
+package pt.isel.poo.g6li21d.draw;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,17 +13,16 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import pt.isel.poo.g6li11d.draw.model.Circle;
-import pt.isel.poo.g6li11d.draw.model.DrawModel;
-import pt.isel.poo.g6li11d.draw.model.Figure;
-import pt.isel.poo.g6li11d.draw.model.FreeForm;
-import pt.isel.poo.g6li11d.draw.model.Line;
-import pt.isel.poo.g6li11d.draw.model.Pixel;
-import pt.isel.poo.g6li11d.draw.model.Rect;
-import pt.isel.poo.g6li11d.draw.view.DrawView;
+import pt.isel.poo.g6li21d.draw.model.Circle;
+import pt.isel.poo.g6li21d.draw.model.DrawModel;
+import pt.isel.poo.g6li21d.draw.model.Figure;
+import pt.isel.poo.g6li21d.draw.model.FreeForm;
+import pt.isel.poo.g6li21d.draw.model.Line;
+import pt.isel.poo.g6li21d.draw.model.Pixel;
+import pt.isel.poo.g6li21d.draw.model.Rect;
+import pt.isel.poo.g6li21d.draw.view.DrawView;
 
 public class DrawController extends Activity {
 

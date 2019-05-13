@@ -1,4 +1,4 @@
-package pt.isel.poo.g6li11d.draw;
+package pt.isel.poo.g6li21d.draw;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

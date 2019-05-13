@@ -1,4 +1,4 @@
-package pt.isel.poo.g6li11d.draw.model;
+package pt.isel.poo.g6li21d.draw.model;
 
 public class Rect extends Line {
 

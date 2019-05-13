@@ -1,4 +1,4 @@
-package pt.isel.poo.g6li11d.draw.view;
+package pt.isel.poo.g6li21d.draw.view;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
@@ -8,9 +8,9 @@ import android.view.View;
 
 import java.util.LinkedList;
 
-import pt.isel.poo.g6li11d.draw.DrawController;
-import pt.isel.poo.g6li11d.draw.model.DrawModel;
-import pt.isel.poo.g6li11d.draw.model.Figure;
+import pt.isel.poo.g6li21d.draw.DrawController;
+import pt.isel.poo.g6li21d.draw.model.DrawModel;
+import pt.isel.poo.g6li21d.draw.model.Figure;
 
 @SuppressLint("ViewConstructor")
 public class DrawView extends View {

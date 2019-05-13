@@ -1,8 +1,6 @@
-package pt.isel.poo.g6li11d.draw.model;
+package pt.isel.poo.g6li21d.draw.model;
 
 import java.io.PrintWriter;
-import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.MatchResult;
 
